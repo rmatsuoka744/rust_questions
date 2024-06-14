@@ -1,0 +1,9 @@
+[package]
+name = "question_2"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+thiserror = "1"
+reqwest = "0"
+tokio = { version = "1", features = ["full"] }
