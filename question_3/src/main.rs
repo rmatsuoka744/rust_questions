@@ -1,23 +1,17 @@
 fn main() {
     let numbers = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-    let iter = numbers.iter();
-    println!("{:?}", iter);
-
+    // フィルタリング条件: 偶数だけを抽出
     let filter_even = |x: &&i32| -> bool { *x % 2 == 0 };
 
-    let filtered_iter = iter.filter(filter_even);
+    // マッピング処理: 2倍にする
+    let map_double = |x: i32| -> i32 { x * 2 };
 
-    println!("{:?}", filtered_iter);
+    let filtered_and_mapped: Vec<i32> = numbers
+        .iter()
+        .filter(filter_even)
+        .map(|&x| map_double(x))
+        .collect();
 
-    let map_iter = |x: &i32| -> i32 { x * 2 };
-
-    let filtered_maped_iter = filtered_iter.map(map_iter);
-
-    println!("{:?}", filtered_maped_iter);
-    
-    let filtered_maped_numbers: Vec<i32> = filtered_maped_iter.collect();
-
-    println!("{:?}", filtered_maped_numbers);
-
+    println!("Filtered and mapped list: {:?}", filtered_and_mapped);
 }
